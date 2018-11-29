@@ -1,0 +1,59 @@
+$ python manage.py runserver
+------------------------------------------------------------------------
+$ python manage.py startapp polls
+
+polls/views.py
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("Hello, world. You're at the polls index.")
+------------------------------------------------------------------------
+    polls/
+    __init__.py
+    admin.py
+    apps.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    urls.py
+    views.py
+In the polls/urls.py file include the following code:
+
+polls/urls.py
+from django.conf.urls import url
+
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.index, name='index'),
+]
+------------------------------------------------------------------------
+DjangoProject/urls.py
+from django.conf.urls import include, url
+from django.contrib import admin
+
+urlpatterns = [
+    url(r'^polls/', include('polls.urls')),
+    url(r'^admin/', admin.site.urls),
+]
+
+$ python manage.py runserver
+
+From the local browser:
+http://127.0.0.1:8000/businesses/?p=1
+------------------------------------------------------------------------
+The project is submitted to the drop box as required by the test specification.
+The deployment is on heroku.com as suggested, e.g.:
+
+https://pacific-fortress-21732.herokuapp.com/businesses/?q=Auto&page=0&size=10
+
+The submission consists of 2 parts:
+1. The utility that creates the new index with the total_checkins field: ESBuildIndexTotalCheckins.py
+2. Django project that is deployed on heroku
+
+Thanks for your patience, I am looking forward to hear your comment on the project.
+
+Have a good weekend,
+Alexey
